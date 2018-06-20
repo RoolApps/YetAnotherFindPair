@@ -1,0 +1,29 @@
+# Custom
+singleton Style 0.1 ./Custom/Style.qml
+MenuPageButton 0.1 ./Custom/MenuPageButton.qml
+SettingsPageButton 0.1 ./Custom/SettingsPageButton.qml
+ResultPageText 0.1 ./Custom/ResultPageText.qml
+AboutPageText 0.1 ./Custom/AboutPageText.qml
+
+#Screens
+MainScreen 0.1 ./Screens/MainScreen.qml
+SplashScreen 0.1 ./Screens/SplashScreen.qml
+
+# Cpp
+CppCell 0.1 ./Cpp/CppCell.qml
+CppGrid 0.1 ./Cpp/CppGrid.qml
+
+# Pages
+BasePage 0.1 ./Pages/BasePage.qml
+MenuPage 0.1 ./Pages/MenuPage.qml
+GamePage 0.1 ./Pages/GamePage.qml
+SelectLevelPage 0.1 ./Pages/SelectLevelPage.qml
+TutorialPage 0.1 ./Pages/TutorialPage.qml
+SettingsPage 0.1 ./Pages/SettingsPage.qml
+ResultPage 0.1 ./Pages/ResultPage.qml
+
+# Utils
+FlipController 0.1 ./Utils/FlipController.qml
+
+# Javascript
+Utils 0.1 ../Utils.js
