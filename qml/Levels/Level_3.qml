@@ -7,18 +7,5 @@ Level {
     levelId: 3
     rows: 3
     columns: 3
-    difficulty: 15
-    hints:
-        [Game.Bird,
-        Game.Umbrella,
-        Game.Cat,
-
-        Game.Umbrella,
-        Game.Transparent,
-        Game.Turtle,
-
-        Game.Bird,
-        Game.Turtle,
-        Game.Cat
-    ]
+    difficulty: 1
 }

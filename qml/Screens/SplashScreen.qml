@@ -1,6 +1,8 @@
 import QtQuick 2.9
 import QtQuick.Window 2.3
 
+import ".."
+
 Rectangle {
     id: root
 
@@ -10,8 +12,8 @@ Rectangle {
 
     Image {
         id: background
-        sourceSize.width: Screen.width
-        sourceSize.height: Screen.height
+        sourceSize.width: Style.screenWidth
+        sourceSize.height: Style.screenHeight
         fillMode: Image.PreserveAspectFit
         source: "qrc:/assets/svg/design/splashBackground.svg"
     }

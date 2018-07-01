@@ -55,11 +55,11 @@ void Level::setColumns(int columns){
     }
 }
 
-float Level::difficulty() const{
+int Level::difficulty() const{
     return c_difficulty;
 }
 
-void Level::setDifficulty(float difficulty){
+void Level::setDifficulty(int difficulty){
     if(c_difficulty != difficulty){
         c_difficulty = difficulty;
         emit difficultyChanged();

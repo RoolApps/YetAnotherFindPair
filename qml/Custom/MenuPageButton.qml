@@ -25,7 +25,7 @@ Item {
         Text {
             id: textField
             anchors.centerIn: parent
-            color: Style.fontColor
+            color: Style.menuPageFontColor
             font.family: Style.fontFamily
             font.pointSize: 48
             verticalAlignment: Text.AlignVCenter

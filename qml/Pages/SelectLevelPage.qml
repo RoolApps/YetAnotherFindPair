@@ -65,9 +65,9 @@ BasePage {
         anchors.leftMargin: Utils.percent(5, root.width)
         anchors.right: parent.right
         anchors.rightMargin: anchors.leftMargin
-        anchors.top: pageHeader.bottom
+        anchors.top: parent.top
         anchors.topMargin: anchors.leftMargin
-        anchors.bottom: pageFooter.bottom
+        anchors.bottom: pageHeader.top
         anchors.bottomMargin: anchors.leftMargin
 
         spacing: 10

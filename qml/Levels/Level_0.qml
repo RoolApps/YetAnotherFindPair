@@ -7,12 +7,5 @@ Level {
     levelId: 0
     rows: 2
     columns: 2
-    difficulty: 0.2
-    hints:
-        [Game.Bug,
-        Game.Flower,
-
-        Game.Flower,
-        Game.Bug
-    ]
+    difficulty: 1
 }

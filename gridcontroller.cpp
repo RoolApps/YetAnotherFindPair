@@ -79,6 +79,9 @@ void GridController::loadLevel(Level &level, bool shuffle){
     c_hints = level.hints();
     write(c_qmlObject, "rows", level.rows());
     write(c_qmlObject, "columns", level.columns());
+    this->rows = level.rows();
+    this->columns = level.columns();
+    this->difficulty = level.difficulty();
 
     if(shuffle) level.shuffle();
 
@@ -101,6 +104,8 @@ void GridController::loadLevel(Level &level, bool shuffle){
         }
         c_gridArray2d.append(gridArray);
     }
+
+    levelReady();
 }
 
 Index GridController::getIndex(CellController * controller) {
@@ -112,12 +117,11 @@ Index GridController::getIndex(CellController * controller) {
             }
         }
     }
+    return Index();
 }
 
 /*private slot*/
 void GridController::cellClicked(CellController * controller) {
-
-    dbg << "clicked " << controller->type();
 
     if (firstCell != NULL && secondCell != NULL) {
         return;
@@ -131,6 +135,8 @@ void GridController::cellClicked(CellController * controller) {
         return;
     }
 
+    emit makeMoveSound();
+
     if (firstCell == NULL) {
         firstCell = controller;
     }
@@ -141,8 +147,6 @@ void GridController::cellClicked(CellController * controller) {
 }
 
 void GridController::cellRotationStopped(CellController * controller) {
-
-    dbg << "rotation stopped, " << bool(firstCell == NULL) << " " << bool(secondCell == NULL);
 
     if (firstCell == NULL || secondCell == NULL) {
         return;
@@ -167,21 +171,32 @@ void GridController::cellRotationStopped(CellController * controller) {
     moveCells();
 }
 
-void GridController::shiftCells(GridArray * cells, int offset) {
+void GridController::shiftCells(GridArray * cells, int chunkSize) {
 
     Index * indices = new Index[cells->size()];
     GridArray * newCells = new GridArray();
 
+    int itemsProcessed = 0;
+    int chunksProcessed = 0;
+
+    int offset = randomBool() ? 1 : -1;
+
     for(int cellIndex=0;cellIndex<cells->size();cellIndex++) {
         int sourceCellIndex = cellIndex + offset;
-        if (sourceCellIndex == -1) {
-            sourceCellIndex = cells->size() - 1;
+        if (sourceCellIndex == chunksProcessed * chunkSize - 1) {
+            sourceCellIndex = (chunksProcessed + 1) * chunkSize - 1;
         }
-        if (sourceCellIndex == cells->size()) {
-            sourceCellIndex = 0;
+        if (sourceCellIndex == (chunksProcessed + 1) * chunkSize) {
+            sourceCellIndex = chunksProcessed * chunkSize;
         }
         indices[cellIndex] = getIndex(cells->at(sourceCellIndex));
         newCells->append(cells->at(sourceCellIndex));
+        itemsProcessed++;
+        if(itemsProcessed==chunkSize) {
+            chunksProcessed++;
+            itemsProcessed=0;
+            offset = randomBool() ? 1 : -1;
+        }
     }
 
     GridArray * movedCells = new GridArray();
@@ -205,29 +220,35 @@ void GridController::shiftCells(GridArray * cells, int offset) {
         c_gridArray2d[index.r][index.c] = cells->at(cellIndex);
         cells->at(cellIndex)->setPosition(newCells->at(cellIndex)->getPosition());
     }
+
 }
 
 void GridController::moveCells() {
-    CellController * cell = randomBool() == 0 ? firstCell : secondCell;
-    Index index = getIndex(cell);
-    GridArray * cells = new GridArray();
+
     bool moveRow = randomBool();
-    if (moveRow) {
-        *cells = c_gridArray2d.at(index.r);
+    int length = moveRow ? this->columns : this->rows;
+    QVector<int> vector = QVector<int>();
+    int vectorLength = moveRow ? this->rows : this->columns;
+    for(int i=0;i<vectorLength;i++) {
+        vector.append(i);
     }
-    else {
-        for(int row = 0; row < c_gridArray2d.size(); row++) {
-            cells->append(c_gridArray2d.at(row).at(index.c));
+    std::random_shuffle(vector.begin(), vector.end());
+    GridArray * cells = new GridArray();
+
+    for(int move=0;move<this->difficulty;move++) {
+        for(int cell=0;cell<length;cell++) {
+            if(moveRow) {
+                cells->append(c_gridArray2d.at(vector.at(move)).at(cell));
+            }
+            else {
+                cells->append(c_gridArray2d.at(cell).at(vector.at(move)));
+            }
         }
     }
-
-    int offset = randomBool() ? 1 : -1;
-
-    shiftCells(cells, offset);
+    shiftCells(cells, length);
 }
 
 /*public virtual*/
 void GridController::info() const{
-    dbg << "GRID INFO:";
     return IQmlComponentController::info();
 }

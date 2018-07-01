@@ -14,8 +14,8 @@ BasePage {
         anchors.leftMargin: 10
         anchors.rightMargin: 10
 
-        sourceSize.width: Screen.width
-        sourceSize.height: Screen.height - Style.pageHeaderHeight - Style.pageFooterHeight
+        sourceSize.width: Style.screenWidth
+        sourceSize.height: Style.screenHeight - Style.pageHeaderHeight - Style.pageFooterHeight
 
         source: "qrc:/assets/svg/design/aboutPageBackground.svg"
     }

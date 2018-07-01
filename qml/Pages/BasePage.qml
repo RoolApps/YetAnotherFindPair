@@ -21,8 +21,8 @@ Page {
 
     Image {
         id: background
-        sourceSize.width: Screen.width
-        sourceSize.height: Screen.height
+        sourceSize.width: Style.screenWidth
+        sourceSize.height: Style.screenHeight
         fillMode: Image.PreserveAspectFit
         source: "qrc:/assets/svg/design/background.svg"
     }
@@ -30,7 +30,7 @@ Page {
     Rectangle {
         id: header
 
-        anchors.top: parent.top
+        anchors.bottom: footer.top
         anchors.left: parent.left
         anchors.right: parent.right
         height: Style.pageHeaderHeight + (backButton.height / 2)

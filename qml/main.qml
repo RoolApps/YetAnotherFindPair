@@ -8,7 +8,7 @@ ApplicationWindow {
     id: root
 //    visibility: Window.FullScreen
     x: 1000; y: 40;
-    width: 540; height: 960;
+    width: Style.screenWidth; height: Style.screenHeight;
     visible: true
 
     Loader {

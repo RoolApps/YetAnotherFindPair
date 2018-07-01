@@ -43,17 +43,9 @@ BasePage {
         id: previousLevelLoader
     }
 
-    Image {
-        id: background
-        sourceSize.width: Screen.width
-        sourceSize.height: Screen.height
-        fillMode: Image.PreserveAspectFit
-        source: "qrc:/assets/svg/design/resultBackground.svg"
-    }
-
     Item {
         id: homeButton
-        anchors.top: parent.top
+        anchors.top: pageHeader.top
         anchors.topMargin: height / 2
         anchors.left: parent.left
         anchors.leftMargin: width / 2

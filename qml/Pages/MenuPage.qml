@@ -23,15 +23,15 @@ BasePage {
         }
 
         MenuPageButton {
-            text: "Settings"
-
-            onClicked: root.settingsButtonClicked()
-        }
-
-        MenuPageButton {
             text: "About"
 
             onClicked: root.tutorialButtonClicked()
+        }
+
+        MenuPageButton {
+            text: "Settings"
+
+            onClicked: root.settingsButtonClicked()
         }
 
         MenuPageButton {

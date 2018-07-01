@@ -68,7 +68,7 @@ Item {
 
             onBackButtonClicked: navigation.pop(selectLevelPage)
             onNewLevelOpened: {
-                if (intertitial.isLoaded) intertitial.visible = true
+                if (intertitial.isLoaded && result.levelId % 3) intertitial.visible = true
                 selectLevelPage.update(result.levelId, true)
                 navigation.push(resultPage)
                 resultPage.loadResult(result)
@@ -144,7 +144,7 @@ Item {
         id: banner
 
         Component.onCompleted: {
-            banner.unitId = "ca-app-pub-1760789437352089/5079292905"
+            banner.unitId = "ca-app-pub-1760789437352089/2252532558"
             banner.size = AdMobBanner.SmartBanner
             banner.visible = true
         }
@@ -156,15 +156,26 @@ Item {
         id: intertitial
 
         Component.onCompleted: {
-            intertitial.unitId = "ca-app-pub-1760789437352089/5766890322"
+            intertitial.unitId = "ca-app-pub-1760789437352089/5620931921"
         }
 
         onClosed: {
-            intertitial.unitId = "ca-app-pub-1760789437352089/5766890322"
+            intertitial.unitId = "ca-app-pub-1760789437352089/5620931921"
         }
     }
 
     Component.onCompleted: {
         if(applicationSettings.backgroundMusic()) backgroudMusic.play()
+    }
+
+    Connections {
+        target: Qt.application
+        onStateChanged: {
+            if (Qt.application.state === Qt.ApplicationActive) {
+                if(applicationSettings.backgroundMusic()) backgroudMusic.play()
+            }else if(Qt.application.state === Qt.ApplicationInactive){
+                backgroudMusic.pause()
+            }
+        }
     }
 }

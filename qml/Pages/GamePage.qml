@@ -65,15 +65,48 @@ BasePage {
         }
     }
 
+    Text {
+        id: timer
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.topMargin: height / 2
+        anchors.horizontalCenter: parent.horizontalCenter
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        height: Style.gamePageTimerHeight
+        font.family: Style.gamePageTimerFontFamily
+        font.pointSize: Style.pageHeaderTitleFontSize
+        color: Style.fontColor
+        fontSizeMode: Text.Fit
+        text: "0:00"
+    }
+
     CppItems.GamePlane {
         id: gamePlane
-        anchors.top: pageHeader.bottom
-        anchors.bottom: pageFooter.top
+        anchors.top: timer.bottom
+        anchors.bottom: pageHeader.top
+        anchors.leftMargin: Style.gamePageLeftMargin
+        anchors.rightMargin: Style.gamePageRightMargin
         anchors.left: parent.left
         anchors.right: parent.right
 
         foregroundGrid: CppGrid {
+            anchors.centerIn: gamePlane
+        }
+
+        backgroundGrid: Rectangle {
+            width: gamePlane.width
+            height: gamePlane.height
+            color: "#849eb9"
+            border.color: "#3f4f5f"
+            border.width: 5
+            radius: 5
             anchors.centerIn: parent
+        }
+
+        onSecondTick: function( elapsed ) {
+            timer.text = elapsed
         }
 
         onNewLevelOpened: root.newLevelOpened(result)

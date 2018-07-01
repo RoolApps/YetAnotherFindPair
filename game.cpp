@@ -26,7 +26,6 @@ QQuickItem * Game::createQmlObject(QString const name){
 
 QString Game::cellTypeAsString(CellType type){
     QString stype = staticMetaObject.enumerator(staticMetaObject.indexOfEnumerator("CellType")).valueToKey(type);
-    dbg << type << stype;
     return stype;
 }
 

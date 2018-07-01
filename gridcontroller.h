@@ -16,6 +16,9 @@ class GridController : public QObject, public IQmlComponentController{
 private:
     typedef QVector<CellController *> GridArray;
     typedef QVector<GridArray> GridArray2d;
+    int difficulty;
+    int columns;
+    int rows;
 
 private:
     GridArray2d c_gridArray2d;
@@ -36,7 +39,7 @@ private:
     int calculateCellSize() const;
     Index getIndex(CellController *);
     void moveCells();
-    void shiftCells(GridArray * cells, int offset);
+    void shiftCells(GridArray * cells, int chunkSize);
 
 private slots:
     void cellClicked(CellController *);
@@ -49,6 +52,7 @@ public:
     virtual void info() const;
 
 signals:
+    void levelReady();
     void solved();
     void makeMoveSound();
 };

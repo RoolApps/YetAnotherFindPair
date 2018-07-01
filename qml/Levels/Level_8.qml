@@ -7,21 +7,5 @@ Level {
     levelId: 8
     rows: 5
     columns: 2
-    difficulty: 25
-    hints:
-        [Game.Bulb,
-        Game.Mushroom,
-
-        Game.Medusa,
-        Game.Shell,
-
-        Game.Strawberry,
-        Game.Bug,
-
-        Game.Soda,
-        Game.Diamond,
-
-        Game.Pepper,
-        Game.Bug
-    ]
+    difficulty: 2
 }

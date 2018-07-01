@@ -43,7 +43,6 @@ void CellController::setPosition(QPoint point) {
 
 /*public virtual*/
 void CellController::info() const {
-    dbg << "CELL INFO:";
     return IQmlComponentController::info();
 }
 
@@ -53,7 +52,6 @@ void CellController::onAnimationStopped() {
 }
 
 void CellController::onRotationStopped() {
-    dbg << "on rotation stopped " << flipped();
     if(flipped()) {
         cellRotationStopped(this);
     }
