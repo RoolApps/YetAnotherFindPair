@@ -9,7 +9,6 @@ BasePage {
     withBackButton: false
 
     signal playButtonClicked()
-    signal tutorialButtonClicked()
     signal settingsButtonClicked()
 
     ColumnLayout {
@@ -20,12 +19,6 @@ BasePage {
             text: "Play"
 
             onClicked: root.playButtonClicked()
-        }
-
-        MenuPageButton {
-            text: "About"
-
-            onClicked: root.tutorialButtonClicked()
         }
 
         MenuPageButton {

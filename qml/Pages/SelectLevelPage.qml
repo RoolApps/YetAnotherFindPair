@@ -35,7 +35,7 @@ BasePage {
                 source: "qrc:/qml/Levels/Level_" + model.id + ".qml"
             }
 
-            width: Utils.percent(25, root.width - (4 * selectLevelGrid.spacing) - (2 * selectLevelGrid.anchors.leftMargin))
+            width: Utils.percent(20, root.width - (5 * selectLevelGrid.spacing) - (2 * selectLevelGrid.anchors.leftMargin))
             height: Utils.percent(15, (root.height - pageHeader.height - pageFooter.height) - (6 * selectLevelGrid.spacing) - (2 * selectLevelGrid.anchors.topMargin))
 
             Image {
@@ -69,6 +69,8 @@ BasePage {
         anchors.topMargin: anchors.leftMargin
         anchors.bottom: pageHeader.top
         anchors.bottomMargin: anchors.leftMargin
+
+        columns: 5
 
         spacing: 10
 

@@ -37,7 +37,6 @@ Item {
 
             onPlayButtonClicked: navigation.push(selectLevelPage)
             onSettingsButtonClicked: navigation.push(settingsPage)
-            onTutorialButtonClicked: navigation.push(tutorialPage)
         }
 
         SettingsPage {
@@ -89,13 +88,6 @@ Item {
                 gamePage.loadLevel(level)
             }
             onGoHome: navigation.pop(null)
-        }
-
-        TutorialPage {
-            id: tutorialPage
-            x: -parent.width
-
-            onBackButtonClicked: navigation.pop()
         }
 
         Keys.onBackPressed: {

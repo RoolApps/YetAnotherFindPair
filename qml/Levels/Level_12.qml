@@ -4,8 +4,8 @@ import CppItems 0.1
 
 Level {
     id: root
-    levelId: 12
+    levelId: 13
     rows: 5
-    columns: 4
+    columns: 3
     difficulty: 2
 }

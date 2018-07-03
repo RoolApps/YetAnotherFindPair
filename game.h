@@ -9,7 +9,7 @@
 
 #define GAME_ORGANIZATION "ROOL APPS"
 #define GAME_NAME "Yet Another Find Pair"
-#define GAME_LEVELS_COUNT 23
+#define GAME_LEVELS_COUNT 35
 
 class Game : public QObject {
     Q_OBJECT

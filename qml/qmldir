@@ -18,7 +18,6 @@ BasePage 0.1 ./Pages/BasePage.qml
 MenuPage 0.1 ./Pages/MenuPage.qml
 GamePage 0.1 ./Pages/GamePage.qml
 SelectLevelPage 0.1 ./Pages/SelectLevelPage.qml
-TutorialPage 0.1 ./Pages/TutorialPage.qml
 SettingsPage 0.1 ./Pages/SettingsPage.qml
 ResultPage 0.1 ./Pages/ResultPage.qml
 
