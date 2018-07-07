@@ -6,7 +6,7 @@ import "."
 
 ApplicationWindow {
     id: root
-//    visibility: Window.FullScreen
+    //visibility: Window.FullScreen
     x: 1000; y: 40;
     width: Style.screenWidth; height: Style.screenHeight;
     visible: true
